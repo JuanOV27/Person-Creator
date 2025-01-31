@@ -1,0 +1,120 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilos para los radio buttons */
+label {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+}
+
+/* Estilos para el botón de descarga */
+.btn-download {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745; /* Color verde */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-download:hover {
+  background-color: #218838; /* Color verde más oscuro al pasar el mouse */
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+  
+  /* Capas del avatar */
+/* Estilos generales para el contenedor del avatar */
+#avatar-container {
+  position: sticky;
+  top: 20px;
+  width: 100%;
+  padding-top: 100%;
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 500px) {
+  #avatar-container {
+    position: fixed; /* Cambia a posición fija en móviles */
+    top: 70px; /* Ajusta la posición desde la parte superior */
+    left: 50%; /* Centra el contenedor horizontalmente */
+    transform: translateX(-50%); /* Centra el contenedor horizontalmente */
+    width: 250px; /* Tamaño más pequeño para móviles */
+    height: 250px; /* Tamaño más pequeño para móviles */
+    padding-top: 0; /* Elimina el padding-top para evitar distorsión */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  }
+  
+  /* Ajusta el margen de la columna derecha para evitar solapamiento */
+  #rightclm {
+    margin-top: 10px; /* Aumenta el margen superior para dejar espacio al avatar */
+    width: 100%;
+    height: 250px;
+    padding: 20px; /* Añade padding para mejorar la legibilidad */
+    background-color: rgb(118, 118, 118); /* Fondo blanco para las opciones */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+  }
+
+  /* Ajusta el margen superior del botón de descarga */
+  .btn-download {
+    margin-top: 20px;
+    margin-bottom: 20px; /* Añade margen inferior para separar del contenido */
+  }
+}
+    
+    .avatar-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+    
+   .titulos {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+   }
+
+ 
+  /* Controles */
+  #controls {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

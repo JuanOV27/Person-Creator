@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creador de Avatares con PNG</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Creador de Avatares</h1>
+  <div class="row">
+    <div id="rightclm" class="col-sm-6" style="background-color: rgb(255, 255, 255); color: black;">
+      <div id="avatar-container">        
+        <!-- Capa de color del rostro -->
+        <div id="base-color-layer" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: #ffccaa;
+              z-index: 1;
+              mask-image: url('recursos/Bases/estandar/base.png');
+              -webkit-mask-image: url('recursos/Bases/estandar/color.png');
+              mask-size: cover;
+              -webkit-mask-size: cover;
+              mask-repeat: no-repeat;
+              -webkit-mask-repeat: no-repeat;
+            ">
+        </div>    
+        <!-- Contorno del rostro -->
+        <img id="base-outline-layer" src="recursos/Bases/estandar/base.png" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 2;
+            ">
+      
+        <!-- Capa del cabello -->
+        <div id="hair-color-layer" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 3;
+              background-color: #000000;
+              mask-image: url('recursos/cabello/corto/color.png');
+              -webkit-mask-image: url('recursos/cabello/corto/color.png');
+              mask-size: cover;
+              -webkit-mask-size: cover;
+              mask-repeat: no-repeat;
+              -webkit-mask-repeat: no-repeat;
+            ">
+        </div>
+        <img id="hair-outline-layer" src="recursos/cabello/corto/base.png" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 4;
+            ">
+
+        <!-- Capa de los ojos -->
+        <div id="eye-color-layer" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 5;
+              background-color: #00aaff;
+              mask-image: url('recursos/ojos/estandar/color.png');
+              -webkit-mask-image: url('recursos/ojos/estandar/color.png');
+              mask-size: cover;
+              -webkit-mask-size: cover;
+              mask-repeat: no-repeat;
+              -webkit-mask-repeat: no-repeat;
+            ">
+        </div>
+        <img id="eye-outline-layer" src="recursos/ojos/estandar/base.png" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 6;
+            ">
+  
+        <img id="nose-layer" src="recursos/Narices/corta.png" style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 7;
+          ">
+  
+        <!-- Capa de la boca -->
+        <img id="mouth-layer" src="recursos/bocas/estandar.png" style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 7;
+            ">
+      </div>
+    </div>
+  
+    <div class="col-sm-6" style="background-color: rgb(255, 255, 255); color: black; padding: 20px; border-radius: 10px;">
+      <div class="row">
+        <div class="col-sm-3" style="margin-bottom: 20px;">
+          <a class="titulos">Cambiar tipo de rostro</a>
+        <label><input type="radio" name="face-shape" value="estandar" onchange="changeFaceShape('estandar')" checked> Estandar</label>
+        <label><input type="radio" name="face-shape" value="circulo" onchange="changeFaceShape('circulo')"> Círculo</label>
+        <label><input type="radio" name="face-shape" value="cuadrado" onchange="changeFaceShape('cuadrado')"> Cuadrado</label>
+        <label><input type="radio" name="face-shape" value="diamante" onchange="changeFaceShape('diamante')"> Diamante</label>
+        <input type="color" id="face-color-picker" value="#ffccaa" onchange="updateFaceColor()">
+        </div>
+      
+        <div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black; ">
+          <a class="titulos">Cambiar Cabello</a>
+        <label><input type="radio" name="hair-style" value="corto" onchange="changeHair('corto')" checked> Corto</label>
+        <label><input type="radio" name="hair-style" value="largo" onchange="changeHair('largo')"> Largo</label>
+        <label><input type="radio" name="hair-style" value="desaliniado" onchange="changeHair('desaliniado')"> Desaliñado</label>
+        <label><input type="radio" name="hair-style" value="desaliniado" onchange="changeHair('libro')"> Libro</label>
+
+        <input type="color" id="hair-color-picker" onchange="updateHairColor()">
+        </div>
+      
+        <div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black; "> 
+          <a class="titulos">Cambiar ojos</a>
+        <label><input type="radio" name="eye-style" value="estandar" onchange="changeEyes('estandar')" checked> Estandar</label>
+        <label><input type="radio" name="eye-style" value="feliz" onchange="changeEyes('feliz')"> Feliz</label>
+        <label><input type="radio" name="eye-style" value="enojado" onchange="changeEyes('enojado')"> Enojado</label>
+        <label><input type="radio" name="eye-style" value="enojado" onchange="changeEyes('sigilo')"> Sigilo</label>
+
+        <input type="color" id="eye-color-picker" onchange="updateEyeColor()">
+        </div>
+      
+        <div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black; "> 
+          <a class="titulos">Cambiar boca</a>
+          <label><input type="radio" name="mouth-style" value="asombro" onchange="changeMouth('estandar')" checked> Estandar</label>
+
+        <label><input type="radio" name="mouth-style" value="sonrisa" onchange="changeMouth('sonrisa')" > Sonrisa</label>
+        <label><input type="radio" name="mouth-style" value="triste" onchange="changeMouth('triste')"> Triste</label>
+        <label><input type="radio" name="mouth-style" value="asombro" onchange="changeMouth('asombro')"> Asombro</label>
+
+        </div>
+      
+        <div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black; "> 
+          <a class="titulos">Cambiar nariz</a>
+        <label><input type="radio" name="nose-style" value="corta" onchange="changeNose('corta')" checked> Corta</label>
+        <label><input type="radio" name="nose-style" value="media" onchange="changeNose('media')"> Media</label>
+        <label><input type="radio" name="nose-style" value="larga" onchange="changeNose('larga')"> Larga</label>
+        </div>
+      </div>
+    </div>
+
+<!-- Campo para ingresar el nombre del avatar -->
+<div class="col-sm-12" style="margin-top: 20px;">
+  <label for="avatar-name">Nombre del Avatar:</label>
+  <input type="text" id="avatar-name" placeholder="Ingresa el nombre del avatar">
+</div>
+
+<!-- Botón para descargar el avatar -->
+<button onclick="downloadAvatar()" class="btn-download">Descargar Avatar</button>
+
+  </div>
+
+  </p>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
