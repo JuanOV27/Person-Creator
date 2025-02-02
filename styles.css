@@ -118,3 +118,20 @@ input[type="radio"] {
     background-color: #0056b3;
   }
   
+
+  /* Estilos para el botón de generar avatar aleatorio */
+.btn-random {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ffc107; /* Color amarillo */
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-random:hover {
+  background-color: #e0a800; /* Color amarillo más oscuro al pasar el mouse */
+}

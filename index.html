@@ -46,7 +46,7 @@
               left: 0;
               width: 100%;
               height: 100%;
-              z-index: 3;
+              z-index: 11;
               background-color: #000000;
               mask-image: url('recursos/cabello/corto/color.png');
               -webkit-mask-image: url('recursos/cabello/corto/color.png');
@@ -62,8 +62,58 @@
               left: 0;
               width: 100%;
               height: 100%;
-              z-index: 4;
+              z-index: 12;
             ">
+        <!-- Capa de vello facial -->
+<div id="facialhair-color-layer" style="
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 8;
+background-color: transparent;
+mask-image: url('recursos/vellofacial/barba/color.png');
+mask-size: cover;
+-webkit-mask-size: cover;
+mask-repeat: no-repeat;
+-webkit-mask-repeat: no-repeat;
+">
+</div>
+<img id="facialhair-outline-layer" src="" style="
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 9;
+">
+
+<!-- Capa de lentes -->
+<div id="glasses-color-layer" style="
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 10;
+background-color: transparent;
+mask-image: url('recursos/lentes/estandar/color.png');
+-webkit-mask-image: url('recursos/lentes/estandar/color.png');
+mask-size: cover;
+-webkit-mask-size: cover;
+mask-repeat: no-repeat;
+-webkit-mask-repeat: no-repeat;
+">
+</div>
+<img id="glasses-outline-layer" src="" style="
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 11;
+">
 
         <!-- Capa de los ojos -->
         <div id="eye-color-layer" style="
@@ -113,6 +163,10 @@
     </div>
   
     <div class="col-sm-6" style="background-color: rgb(255, 255, 255); color: black; padding: 20px; border-radius: 10px;">
+
+      <!-- Botón para generar un avatar aleatorio -->
+      <button onclick="generateRandomAvatar()" class="btn-random">Generar Avatar Aleatorio</button>
+
       <div class="row">
         <div class="col-sm-3" style="margin-bottom: 20px;">
           <a class="titulos">Cambiar tipo de rostro</a>
@@ -123,15 +177,41 @@
         <input type="color" id="face-color-picker" value="#ffccaa" onchange="updateFaceColor()">
         </div>
       
-        <div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black; ">
-          <a class="titulos">Cambiar Cabello</a>
-        <label><input type="radio" name="hair-style" value="corto" onchange="changeHair('corto')" checked> Corto</label>
-        <label><input type="radio" name="hair-style" value="largo" onchange="changeHair('largo')"> Largo</label>
-        <label><input type="radio" name="hair-style" value="desaliniado" onchange="changeHair('desaliniado')"> Desaliñado</label>
-        <label><input type="radio" name="hair-style" value="libro" onchange="changeHair('libro')"> Libro</label>
+        <!-- Controles para el cabello -->
+<div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black;">
+  <a class="titulos">Cambiar Cabello</a>
+  <label><input type="radio" name="hair-style" value="ninguno" onchange="changeHair('ninguno')" > Ninguno</label>
+  <label><input type="radio" name="hair-style" value="corto" onchange="changeHair('corto')" checked> Corto</label>
+  <label><input type="radio" name="hair-style" value="largo" onchange="changeHair('largo')"> Largo</label>
+  <label><input type="radio" name="hair-style" value="desaliniado" onchange="changeHair('desaliniado')"> Desaliñado</label>
+  <label><input type="radio" name="hair-style" value="libro" onchange="changeHair('libro')"> Libro</label>
+  <label><input type="radio" name="hair-style" value="aleman" onchange="changeHair('aleman')"> Aleman</label>
+  <label><input type="radio" name="hair-style" value="bob" onchange="changeHair('bob')"> Bobcut</label>
 
-        <input type="color" id="hair-color-picker" onchange="updateHairColor()">
-        </div>
+
+  <input type="color" id="hair-color-picker" onchange="updateHairColor()">
+</div>
+
+<!-- Controles para el vello facial -->
+<div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black;">
+  <a class="titulos">Cambiar Vello Facial</a>
+  <label><input type="radio" name="facialhair-style" value="ninguno" onchange="changeFacialHair('ninguno')" checked> Ninguno</label>
+  <label><input type="radio" name="facialhair-style" value="barba" onchange="changeFacialHair('barba')"> Barba</label>
+  <label><input type="radio" name="facialhair-style" value="chivo" onchange="changeFacialHair('chivo')"> Chivo</label>
+  <label><input type="radio" name="facialhair-style" value="ducht" onchange="changeFacialHair('ducht')"> Ducht</label>
+  <label><input type="radio" name="facialhair-style" value="mostacho" onchange="changeFacialHair('mostacho')"> Mostacho</label>
+  <input type="color" id="facialhair-color-picker" onchange="updateFacialHairColor()">
+</div>
+
+<!-- Controles para los lentes -->
+<div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black;">
+  <a class="titulos">Cambiar Lentes</a>
+  <label><input type="radio" name="glasses-style" value="ninguno" onchange="changeGlasses('ninguno')" checked> Ninguno</label>
+  <label><input type="radio" name="glasses-style" value="estandar" onchange="changeGlasses('estandar')"> Estandar</label>
+  <label><input type="radio" name="glasses-style" value="redondos" onchange="changeGlasses('redondos')"> Redondos</label>
+  <label><input type="radio" name="glasses-style" value="rectangulares" onchange="changeGlasses('rectangulares')"> Rectangulares</label>
+  <input type="color" id="glasses-color-picker" onchange="updateGlassesColor()">
+</div>
       
         <div class="col-sm-3" style="background-color: rgb(255, 255, 255); color: black; "> 
           <a class="titulos">Cambiar ojos</a>
